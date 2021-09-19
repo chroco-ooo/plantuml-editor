@@ -56,21 +56,16 @@ function encode6bit(b) {
     return '?';
 }
 
-// function compress(s) {
-//     //UTF8
-//     s = unescape(encodeURIComponent(s));
-//     $('im').src = "http://www.plantuml.com/plantuml/img/"+encode64(zip_deflate(s, 9));
-// }
-
 $('#redrawBtn').click(function(){
     jsEditor.save();
     //UTF8
     var s = unescape(encodeURIComponent($('#editor').val()));
-    var url = "https://www.livlog.xyz/plantuml/png/"+encode64(zip_deflate(s, 9));
+    var url = "https://www.livlog.xyz/plantuml/png/"+encode64(deflate(s, 9));
     console.log(url);
     var $img = $('<img>');
     $img.attr('src', url);
     $('#plantImg').html($img);
+    $('#plantImg').show();
 });
 
 $('#saveBtn').click(function(){
