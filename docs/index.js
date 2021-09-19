@@ -65,9 +65,31 @@ $('#redrawBtn').click(function(){
     var $img = $('<img>');
     $img.attr('src', url);
     $('#plantImg').html($img);
-    $('#plantImg').show();
+    $('.invisible').show();
+    $('#imageUrl').val(url);
+    $('#embed').val($('#plantImg').html());
 });
 
 $('#saveBtn').click(function(){
     console.log('#saveBtn');
+});
+
+$('#imageUrlCopy').click(function(){
+    if(navigator.clipboard){
+        navigator.clipboard.writeText($('#imageUrl').val());
+        // グリップボードにコピーしました。
+        alert('グリップボードにコピーしました。');
+    } else {
+        alert('コピーに失敗しました。しました。');
+    }
+});
+
+$('#embedCopy').click(function(){
+    if(navigator.clipboard){
+        navigator.clipboard.writeText($('#embed').val());
+        // グリップボードにコピーしました。
+        alert('グリップボードにコピーしました。');
+    } else {
+        alert('コピーに失敗しました。しました。');
+    }
 });

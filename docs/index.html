@@ -74,23 +74,47 @@
           <div class="column">
             <div class="buttons">
               <button id="redrawBtn" class="button is-primary">再描画</button>
+              <!--   
               <button id="saveBtn" class="button is-link">保存</button>
+              -->
             </div>
           </div>
         </div>
         <div class="columns">
-          <div class="column is-two-fifths">
+          <div class="column">
             <div class="box">
               <textarea id="editor">Bob->Alice : hello</textarea>
             </div>
           </div>
-          <div class="column is-two-fifths">
+          <div class="column">
             <div id="plantImg"class="box invisible">
 
             </div>
-          </div>
-          <div class="column">
-
+            <div class="box invisible">
+              <label class="label">イメージURL</label>
+              <div class="field has-addons">
+                
+                <div class="control is-expanded">
+                  <input id="imageUrl" class="input" type="text" placeholder="URL">
+                </div>
+                <div class="control">
+                  <a id="imageUrlCopy" class="button is-info">
+                    COPY
+                  </a>
+                </div>
+              </div>
+              <label class="label">Embed</label>
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <input id="embed" class="input" type="text" placeholder="Embed">
+                </div>
+                <div class="control">
+                  <a id="embedCopy" class="button is-info">
+                    COPY
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
     </section>
