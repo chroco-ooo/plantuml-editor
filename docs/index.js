@@ -56,11 +56,10 @@ function encode6bit(b) {
     return '?';
 }
 
-$('#redrawBtn').click(function(){
-    jsEditor.save();
+function compress(s, type) {
     //UTF8
-    var s = unescape(encodeURIComponent($('#editor').val()));
-    var url = "https://chroco.ooo/plantuml/png/"+encode64(deflate(s, 9));
+    var s = unescape(encodeURIComponent(s));
+    var url = "https://chroco.ooo/plantuml/" + type + "/" + encode64(deflate(s, 9));
     console.log(url);
     var $img = $('<img>');
     $img.attr('src', url);
@@ -68,10 +67,25 @@ $('#redrawBtn').click(function(){
     $('.invisible').show();
     $('#imageUrl').val(url);
     $('#embed').val($('#plantImg').html());
+}
+
+$('#redrawBtn').click(function(){
+    jsEditor.save();
+    compress($('#editor').val(),'png');
 });
 
 $('#saveBtn').click(function(){
     console.log('#saveBtn');
+});
+
+$('#pngBtn').click(function(){
+    jsEditor.save();
+    compress($('#editor').val(),'png');
+});
+
+$('#svgBtn').click(function(){
+    jsEditor.save();
+    compress($('#editor').val(),'svg');
 });
 
 $('#imageUrlCopy').click(function(){
