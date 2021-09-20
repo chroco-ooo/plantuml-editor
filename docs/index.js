@@ -4,6 +4,7 @@ var jsEditor = CodeMirror.fromTextArea(textarea, {
     lineNumbers: true,
     theme: 'ayu-dark'  // <- テーマの名前
 });
+jsEditor.setSize("100%", "400px");
 jsEditor.save();
 
 function encode64(data) {
@@ -68,6 +69,36 @@ function compress(s, type) {
     $('#imageUrl').val(url);
     $('#embed').val($('#plantImg').html());
 }
+
+async function samples() {
+    const response = await fetch("samples.json"); 
+    const list = await response.json();
+    let category = null;
+    let $category = null;
+    let fstFlg = true;
+    for (data of list) {
+        if (category !== data.category) {
+            category = data.category;
+            $category = $(`<optgroup  label="${data.category}">`);
+            $('#samples').append($category);
+            // if (fstFlg) {
+            //     fstFlg = false;
+            // } else {
+            //     $('#samples').append($category);
+            // }
+        }
+        $category.append(`<option value="${data.id}">${data.name}</option>`);
+    }
+}
+samples();
+
+$('#samples').change(async function(){
+    const num = ('00' + $(this).val()).slice(-2);
+    const response = await fetch("./samples/" + num + ".pu"); 
+    const text = await response.text();
+    console.log(text);
+    jsEditor.getDoc().setValue(text);
+});
 
 $('#redrawBtn').click(function(){
     jsEditor.save();
