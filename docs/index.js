@@ -107,3 +107,15 @@ $('#embedCopy').click(function(){
         alert('コピーに失敗しました。しました。');
     }
 });
+
+$('#aboutBtn').click(function(){
+    Swal.fire({
+        title: 'PlantUML Embed',
+        html: `
+        PlantUML Embedは、<a href="https://chroco.ooo/" target="_blank">CHROCO</a>で
+        「<a href="https://plantuml.com/ja/" target="_blank">PlantUML</a>」を利用するためのEmbedを作成するためのツールです。
+        PlantUM Lは、ダイアグラムのような図を素早く作成するためのコンポーネントです。<br><br>
+        こちらのツールを活用して CHROCO に図形を挿入してみてください。
+        `,
+    });
+});
