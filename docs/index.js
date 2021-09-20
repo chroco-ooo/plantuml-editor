@@ -60,7 +60,7 @@ $('#redrawBtn').click(function(){
     jsEditor.save();
     //UTF8
     var s = unescape(encodeURIComponent($('#editor').val()));
-    var url = "https://www.livlog.xyz/plantuml/png/"+encode64(deflate(s, 9));
+    var url = "https://chroco.ooo/plantuml/png/"+encode64(deflate(s, 9));
     console.log(url);
     var $img = $('<img>');
     $img.attr('src', url);
