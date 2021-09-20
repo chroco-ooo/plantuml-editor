@@ -16,7 +16,7 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="#">
           <img src="./img/chroco_logo.png" width="28" height="28">
           <h1 class="title">PlantUML Embed</h1>
         </a>
@@ -27,9 +27,10 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
-<!--    
+   
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
+<!-- 
           <a class="navbar-item">
             Home
           </a>
@@ -59,31 +60,58 @@
               </a>
             </div>
           </div>
+-->
         </div>
     
         <div class="navbar-end">
           <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>About</strong>
+              </a>
+            </div>
           </div>
         </div>
       </div>
--->
+
     </nav>
     <section class="section">
       <div class="container">
         <div class="columns">
           <div class="column">
-            <div class="buttons">
-              <button id="redrawBtn" class="button is-primary">再描画</button>
-              <!--   
-              <button id="saveBtn" class="button is-link">保存</button>
-              -->
+            <div class="select">
+              <select>
+                <option value="default">Select a sample...</option>
+                <optgroup label="Theropods">
+                  <option>Tyrannosaurus</option>
+                  <option>Velociraptor</option>
+                  <option>Deinonychus</option>
+                </optgroup>
+                <optgroup label="Sauropods">
+                  <option>Diplodocus</option>
+                  <option>Saltasaurus</option>
+                  <option>Apatosaurus</option>
+                </optgroup>
+              </select>
             </div>
           </div>
         </div>
         <div class="columns">
           <div class="column">
             <div class="box">
-              <textarea id="editor">Bob->Alice : hello</textarea>
+              <div class="field">
+                <div class="control">
+                  <textarea id="editor">Bob->Alice : hello</textarea>
+                </div>
+              </div>
+
+              
+              <div class="buttons">
+                <button id="redrawBtn" class="button is-primary">描画</button>
+                <!--   
+                <button id="saveBtn" class="button is-link">保存</button>
+                -->
+              </div>
             </div>
           </div>
           <div class="column">
