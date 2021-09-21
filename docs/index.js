@@ -88,11 +88,6 @@ async function samples() {
             category = data.category;
             $category = $(`<optgroup  label="${data.category}">`);
             $('#samples').append($category);
-            // if (fstFlg) {
-            //     fstFlg = false;
-            // } else {
-            //     $('#samples').append($category);
-            // }
         }
         $category.append(`<option value="${data.id}">${data.name}</option>`);
     }
