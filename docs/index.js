@@ -60,7 +60,7 @@ function encode6bit(b) {
 function compress(s, type) {
     //UTF8
     var s = unescape(encodeURIComponent(s));
-    var url = "https://chroco.ooo/plantuml/" + type + "/" + encode64(deflate(s, 9));
+    var url = "https://www.livlog.xyz/plantuml/" + type + "/" + encode64(deflate(s, 9));
     console.log(url);
     var $img = $('<img>');
     $img.attr('src', url);
@@ -93,7 +93,7 @@ async function samples() {
 samples();
 
 $('#samples').change(async function(){
-    const num = ('00' + $(this).val()).slice(-2);
+    const num = ('000' + $(this).val()).slice(-3);
     const response = await fetch("./samples/" + num + ".pu"); 
     const text = await response.text();
     console.log(text);
