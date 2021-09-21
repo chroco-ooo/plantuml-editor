@@ -7,6 +7,13 @@ var jsEditor = CodeMirror.fromTextArea(textarea, {
 jsEditor.setSize("100%", "400px");
 jsEditor.save();
 
+const tempSave = localStorage.getItem('temp-save');
+if (tempSave) {
+    jsEditor.getDoc().setValue(tempSave);
+} else {
+    jsEditor.getDoc().setValue('Bob->Alice : hello');
+}
+
 function encode64(data) {
     r = "";
     for (i=0; i<data.length; i+=3) {
@@ -93,11 +100,20 @@ async function samples() {
 samples();
 
 $('#samples').change(async function(){
-    const num = ('000' + $(this).val()).slice(-3);
-    const response = await fetch("./samples/" + num + ".pu"); 
-    const text = await response.text();
-    console.log(text);
-    jsEditor.getDoc().setValue(text);
+    if ('default' ===  $(this).val()) {
+        const tempSave = localStorage.getItem('temp-save');
+        if (tempSave) {
+            jsEditor.getDoc().setValue(tempSave);
+        } else {
+            jsEditor.getDoc().setValue('Bob->Alice : hello');
+        }
+    } else {
+        const num = ('000' + $(this).val()).slice(-3);
+        const response = await fetch("./samples/" + num + ".pu"); 
+        const text = await response.text();
+        console.log(text);
+        jsEditor.getDoc().setValue(text);
+    }
 });
 
 $('#redrawBtn').click(function(){
@@ -106,7 +122,16 @@ $('#redrawBtn').click(function(){
 });
 
 $('#saveBtn').click(function(){
-    console.log('#saveBtn');
+    Swal.fire({
+        text: '一時保存します。よろしいですか？',
+        showCancelButton: true,
+        confirmButtonText: '保存',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            jsEditor.save();
+            localStorage.setItem('temp-save', $('#editor').val());
+        }
+    })
 });
 
 $('#pngBtn').click(function(){
