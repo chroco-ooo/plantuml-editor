@@ -1,0 +1,7 @@
+@startuml
+'https://plantuml.com/handwritten
+skinparam handwritten true
+
+Alice -> Bob : hello
+note right: Not validated yet
+@enduml
