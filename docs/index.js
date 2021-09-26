@@ -109,7 +109,11 @@ $('#samples').change(async function(){
         console.log(text);
         jsEditor.getDoc().setValue(text);
     }
+    
+    $('#redrawBtn').trigger('click');
 });
+
+// $('#samples').trigger('change');
 
 $('#redrawBtn').click(function(){
     jsEditor.save();
