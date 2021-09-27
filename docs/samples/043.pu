@@ -1,0 +1,10 @@
+@startuml
+xearth(600,600)
+viewMagnification = 1.0
+daySideBrightness = 100
+nightSideBrightness = 50
+terminatorDiscontinuity = 30
+sunPosRelLong = -40
+sunPosRelLat = 20
+39.75 -105.00 "Denver"
+@enduml
