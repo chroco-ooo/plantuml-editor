@@ -67,7 +67,8 @@ function encode6bit(b) {
 function compress(s, type) {
     //UTF8
     var s = unescape(encodeURIComponent(s));
-    var url = "https://www.livlog.xyz/plantuml/" + type + "/" + encode64(deflate(s, 9));
+    var url = "https://app.livlog.xyz/plantuml/" + type + "/" + encode64(deflate(s, 9));
+    // var url = "http://localhost:8080/" + type + "/" + encode64(deflate(s, 9));
     console.log(url);
     var $img = $('<img>');
     $img.attr('src', url);
